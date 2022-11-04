@@ -68,7 +68,5 @@ class InterfaceRepository(Generic[T]):
         data =[]
         for x in col.find(the_query):
             x["_id"] = x["_id"].__str__()
-            x = self.transformObjectIds(x)
-            x = self.getValuesDBRef(x)
             data.append(x)
         return data
