@@ -1,53 +1,31 @@
 from model.estudiante import Estudiante
+from repository.estudiante_repository import RepositorioEstudiante
 
 
 class ControladorEstudiante():
     def __init__(self):
-        print("Creando el controlador de estudiante")
+        self.repo = RepositorioEstudiante()
 
     # Listar
     def index(self):
-        print("Listar todos los estudiantes")
-        estudiante1 = {
-            "_id": "abc1",
-            "cedula": "123456",
-            "nombre": "Juan Camilo",
-            "apellido": "Castro Pinto"
-        }
-        estudiante2 = {
-            "_id": "abc2",
-            "cedula": "654321",
-            "nombre": "Pepito",
-            "apellido": "Perez"
-        }
-        return [estudiante1, estudiante2]
+        return self.repo.find_all()
 
     # Crear
     def create(self, info_estudiante):
-        print("Crear un estudiante")
         nuevo_estudiante = Estudiante(info_estudiante)
-        return nuevo_estudiante.__dict__
+        return self.repo.save(nuevo_estudiante)
 
     # Leer
     def show(self, id):
-        print("Mostrar un estudiante con id ",id)
-        #Buscamos en la base de datos y el resultado se guarda en la variable de estudiante
-        estudiante1 = {
-            "_id": id,
-            "cedula": "123456",
-            "nombre": "Juan Camilo",
-            "apellido": "Castro Pinto"
-        }
-        return estudiante1
+        return self.repo.find_by_id(id)
 
     # Actualizar
     def update(self,id, info_estudiante):
-        print("Actualizar un estudiante con id ",id)
         estudiante_actualizado = Estudiante(info_estudiante)
-        return estudiante_actualizado.__dict__
+        return self.repo.update(id, estudiante_actualizado)
+
 
     # Eliminar
     def delete(self,id):
-        print("Eliminando el estudiante con el id", id)
-        return {"deleted_count": 1}
+        return self.repo.delete(id)
 

@@ -1,4 +1,6 @@
 {
   "url-backend": "127.0.0.1",
-  "port": 9999
+  "port": 9999,
+  "database-url": "mongodb+srv://karlablanco:1143Krbc$@cluster0.mxetqiw.mongodb.net/bd-registro-academico?retryWrites=true&w=majority",
+  "database-name": "bd-registro-academico"
 }

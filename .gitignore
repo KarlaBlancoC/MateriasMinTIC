@@ -2,3 +2,4 @@ venv/
 .idea/
 controller/__pycache__/
 model/__pycache__/
+repository/__pycache__/
